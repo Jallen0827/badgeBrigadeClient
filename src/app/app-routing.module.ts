@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { StudentComponent } from './student/student.component';
 import { PostingJobComponent } from './posting-job/posting-job.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './auth.service';
 import { AuthGuardService as AuthGuard } from './auth-guard.service';
 import { RoleGuardService as RoleGuard } from './role-guard.service';
@@ -20,6 +21,10 @@ import { RoleGuardService as RoleGuard } from './role-guard.service';
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "", redirectTo: "/login", pathMatch: "full" },
+
+ 
+  { path: "signup", component: SignupComponent },
+
   { path: "main", component: MainComponent, canActivate: [AuthGuard] },
   { path: "student-dashboard", component: StudentDashboardComponent, canActivate: [AuthGuard] },
   { path: "employer-dashboard", component: EmployerDashboardComponent, canActivate: [AuthGuard] },
@@ -31,6 +36,7 @@ const routes: Routes = [
   { path: "student/:id", component: StudentComponent, canActivate: [AuthGuard] },
   { path: "post-job", component: PostingJobComponent, canActivate: [AuthGuard] },
   { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin' } },
+
 ];
 
 @NgModule({

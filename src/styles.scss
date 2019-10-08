@@ -37,9 +37,21 @@ $badgeBrigade-theme: mat-light-theme($badgeBrigade-primary, $badgeBrigade-accent
 
 // specify theme class eg: <body class="my-theme"> ... </body>
 
+
 mat-card {
   display: flex;
 }
 
+
+.mat-grid-list {
+  margin-top: 2em;
+}
+
+* {
+  font-family: 'Barlow', sans-serif;
+
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

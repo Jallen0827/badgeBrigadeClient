@@ -34,6 +34,12 @@ import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { tokenName } from '@angular/compiler';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+
+
+import { SignupComponent } from './signup/signup.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthService } from './auth.service';
@@ -43,6 +49,7 @@ import { RoleGuardService } from './role-guard.service';
 export function getToken(): string {
   return localStorage.getItem('token');
 }
+
 
 @NgModule({
   declarations: [
@@ -64,8 +71,10 @@ export function getToken(): string {
     AboutComponent,
     ContactComponent,
     ProfileComponent,
-    NavbarComponent,
+
     FooterComponent,
+    NavbarComponent,
+    SignupComponent,
   ],
 
   imports: [
@@ -85,7 +94,9 @@ export function getToken(): string {
   BrowserAnimationsModule,
   MatSelectModule,
   FormsModule,
+  MatGridListModule,
   JwtModule
+
 
   ],
   providers: [
