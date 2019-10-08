@@ -54,6 +54,18 @@ export function getToken(): string {
 }
 
 
+import { NavbarComponent } from './_components/navbar/navbar.component';
+import { FooterComponent } from './_components/footer/footer.component';
+import { AuthService } from './_services/auth.service';
+import { AuthGuardService } from './_services/auth-guard.service';
+import { RoleGuardService } from './_services/role-guard.service';
+import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+
+export function getToken(): string {
+  return localStorage.getItem('token');
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,10 +90,13 @@ export function getToken(): string {
     FooterComponent,
     NavbarComponent,
     SignupComponent,
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> origin
   ],
 
   imports: [
@@ -102,7 +117,10 @@ export function getToken(): string {
   MatSelectModule,
   FormsModule,
   MatGridListModule,
+<<<<<<< HEAD
   MatDialogModule
+=======
+>>>>>>> origin
   JwtModule,
   HttpClientModule
 
