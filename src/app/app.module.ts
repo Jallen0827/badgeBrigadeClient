@@ -40,6 +40,16 @@ import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { RoleGuardService } from './role-guard.service';
 
+//////////////////////////////////////////////////////
+//////////////// Wes Import Section //////////////////
+//////////////////////////////////////////////////////
+
+// Employer Dashboard
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+
+
 export function getToken(): string {
   return localStorage.getItem('token');
 }
@@ -84,6 +94,9 @@ export function getToken(): string {
   MatFormFieldModule,
   BrowserAnimationsModule,
   MatSelectModule,
+  MatGridListModule,
+  MatDividerModule,
+  MatListModule,
   FormsModule,
   JwtModule
 

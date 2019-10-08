@@ -1,5 +1,72 @@
 <h1>Employer Dashboard</h1>
 
-<p>employer-dashboard works!</p>
-
-<button routerLink="/post-job">Post a Job</button>
+<mat-grid-list cols="2">
+<!-- Left Side of Dashboard -->
+    <mat-grid-tile>
+        <mat-grid-list cols="1">
+                <mat-card>
+                    <div class="post-job">
+                        <mat-card-actions><button routerLink="/post-job"><i class="material-icons">
+                                add
+                                </i></button></mat-card-actions>
+                        <mat-card-title>Post a job for Eleven Fifty Grads</mat-card-title>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <mat-card-title>Current Job Listings</mat-card-title>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+                        <mat-action-list>
+                            <button mat-list-item (click)="toJob()">Example Job</button>
+                            <button mat-list-item (click)="toJob()">Example Job</button>
+                            <button mat-list-item (click)="toJob()">Example Job</button>
+                            <button mat-list-item (click)="toJob()">Example Job</button>
+                        </mat-action-list>
+                    </mat-card-content>
+                </mat-card>
+        </mat-grid-list>
+    </mat-grid-tile>
+    <mat-divider [vertical]="true"></mat-divider>
+<!-- Right Side of Dashboard -->
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-title>Eleven Fifty Students</mat-card-title>
+            <mat-card-content>
+                <mat-grid-list cols="2" gutterSize="3em">
+                    <mat-grid-tile class="students-container-a">
+                        <mat-card>
+                            <div class="students-container-b">
+                                <img mat-card-avatar>
+                                <mat-card-content>Jon Doe</mat-card-content>
+                            </div>
+                        </mat-card>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-card>
+                            <div class="students-container-b">
+                                <img mat-card-avatar>
+                                <mat-card-content>Jon Doe</mat-card-content>
+                            </div>
+                        </mat-card>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-card>
+                            <div class="students-container-b">
+                                <img mat-card-avatar>
+                                <mat-card-content>Jon Doe</mat-card-content>
+                            </div>
+                        </mat-card>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <mat-card>
+                            <div class="students-container-b">
+                                <img mat-card-avatar>
+                                <mat-card-content>Jon Doe</mat-card-content>
+                            </div>
+                        </mat-card>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
