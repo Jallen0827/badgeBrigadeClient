@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: "profile/:id", component: ProfileComponent, canActivate: [AuthGuard] },
   { path: "student/:id", component: StudentComponent, canActivate: [AuthGuard] },
   { path: "post-job", component: PostingJobComponent, canActivate: [AuthGuard] },
-  { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [RoleGuard] },
+  { path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin' } },
 ];
 
 @NgModule({
