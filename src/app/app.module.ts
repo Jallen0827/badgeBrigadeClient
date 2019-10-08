@@ -12,7 +12,6 @@ import { LoginComponent } from './login/login.component';
 import { MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTableModule,
   MatSelectModule, MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule, MatFormFieldModule,  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserComponent } from './user/user.component';
 
 
 import { CustomMaterialModule } from './core/material.module';
@@ -31,21 +30,28 @@ import { JobInformationComponent } from './job-information/job-information.compo
 import { ProfileComponent } from './profile/profile.component';
 import { PostingJobComponent } from './posting-job/posting-job.component';
 import { StudentComponent } from './student/student.component';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { tokenName } from '@angular/compiler';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+import { RoleGuardService } from './role-guard.service';
+
+export function getToken(): string {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-
     MainComponent,
     StudentDashboardComponent,
     EmployerDashboardComponent,
     IndeedSearchComponent,
-
     PastGradsComponent,
     JobBoardComponent,
     PostJobComponent,
@@ -56,11 +62,12 @@ import { ContactComponent } from './contact/contact.component';
     AdminDashboardComponent,
     StudentComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
     ProfileComponent,
-  
-
+    NavbarComponent,
+    FooterComponent,
   ],
+
   imports: [
   CommonModule,
   MatToolbarModule,
@@ -77,11 +84,16 @@ import { ContactComponent } from './contact/contact.component';
   MatFormFieldModule,
   BrowserAnimationsModule,
   MatSelectModule,
-  FormsModule
+  FormsModule,
+  JwtModule
 
   ],
   providers: [
-    JwtHelperService
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    AuthService,
+    AuthGuardService,
+    RoleGuardService,
   ],
   bootstrap: [AppComponent]
 })
