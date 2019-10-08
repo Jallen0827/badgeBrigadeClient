@@ -13,6 +13,7 @@ import { MatButtonModule, MatCardModule, MatDialogModule, MatInputModule, MatTab
   MatSelectModule, MatToolbarModule, MatMenuModule,MatIconModule, MatProgressSpinnerModule, MatFormFieldModule,  } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { CustomMaterialModule } from './core/material.module';
 import {FormsModule} from '@angular/forms';
 
@@ -29,26 +30,35 @@ import { JobInformationComponent } from './job-information/job-information.compo
 import { ProfileComponent } from './profile/profile.component';
 import { PostingJobComponent } from './posting-job/posting-job.component';
 import { StudentComponent } from './student/student.component';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { tokenName } from '@angular/compiler';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
+
+
 import { SignupComponent } from './signup/signup.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+
+
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { AuthService } from './auth.service';
+import { AuthGuardService } from './auth-guard.service';
+import { RoleGuardService } from './role-guard.service';
+
+export function getToken(): string {
+  return localStorage.getItem('token');
+}
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-
     MainComponent,
     StudentDashboardComponent,
     EmployerDashboardComponent,
     IndeedSearchComponent,
-
     PastGradsComponent,
     JobBoardComponent,
     PostJobComponent,
@@ -61,13 +71,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AboutComponent,
     ContactComponent,
     ProfileComponent,
+
     FooterComponent,
     NavbarComponent,
     SignupComponent,
-
-
-
   ],
+
   imports: [
   CommonModule,
   MatToolbarModule,
@@ -85,11 +94,17 @@ import {MatGridListModule} from '@angular/material/grid-list';
   BrowserAnimationsModule,
   MatSelectModule,
   FormsModule,
-  MatGridListModule
+  MatGridListModule,
+  JwtModule
+
 
   ],
   providers: [
-    JwtHelperService
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    AuthService,
+    AuthGuardService,
+    RoleGuardService,
   ],
   bootstrap: [AppComponent]
 })
